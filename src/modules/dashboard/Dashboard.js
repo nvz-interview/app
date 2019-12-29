@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import styled from 'styled-components';
 
-import {actions as UsersActions} from '../../state/slices/users';
+import {actions as UsersActions} from '../../state/reducers/users';
 
 const DashboardContainer = styled.main`
     padding: ${p => p.theme.unit(2)}px;
