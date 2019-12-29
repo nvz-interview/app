@@ -1,8 +1,6 @@
-import {createStore, compose} from 'redux';
+import {createStore, applyMiddleware, compose} from 'redux';
+import {inject, createDevToolsMiddleware} from '../utils';
 
-import {createDevToolsMiddleware} from './utils';
-
-const reducers = [];
-reducers.push(createDevToolsMiddleware(createStore));
+const reducers = [applyMiddleware(inject(() => ({}))), createDevToolsMiddleware(createStore)];
 
 export default compose(...reducers);

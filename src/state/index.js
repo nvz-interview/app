@@ -1,6 +1,6 @@
 import {createStore} from 'redux';
 
-import rootReducer from './slices';
+import rootReducer from './reducers';
 import intialState from './initial';
 import middleware from './middleware';
 
