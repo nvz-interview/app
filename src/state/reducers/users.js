@@ -1,4 +1,5 @@
 import {createAction, createActions, handleActions} from 'redux-actions';
+import axios from 'axios';
 
 import {merge} from '../utils';
 
@@ -23,10 +24,15 @@ export default handleActions(
     [USERS_IDS_OPTIONS]
 );
 
+const {REACT_APP_FE_SERVER} = process.env;
+
 const getUsersIDs = createAction('LOAD', () => async dispatch => {
     try {
         dispatch(request());
-        dispatch(success({items: [1, 2, 3]}));
+
+        const {data: ids} = await axios.get(`${REACT_APP_FE_SERVER}/users/ids`);
+
+        dispatch(success({items: ids}));
     } catch (err) {
         dispatch(failure(err));
     }
